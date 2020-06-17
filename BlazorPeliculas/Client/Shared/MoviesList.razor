@@ -1,0 +1,27 @@
+﻿@if (Peliculas == null)
+{
+    <text>Cargando...</text>
+}
+else if (Peliculas.Count == 0)
+{
+    <div class="p-3 mb-2 bg-info text-white">No hay películas para mostrar</div>
+}
+else
+{
+    @foreach (Pelicula item in Peliculas)
+    {
+        <SingleMovie Pelicula="item"/>
+    }
+}
+
+@code{
+
+    [Parameter]
+    public List<Pelicula> Peliculas { get; set; }
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    await Task.Delay(3000);
+    //    Peliculas = ObtenerPeliculas();
+    //}
+}

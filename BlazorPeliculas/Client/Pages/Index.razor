@@ -3,42 +3,11 @@
 <h3>Películas</h3>
 <br />
 <div>
-    @*@foreach (Pelicula item in Peliculas)
-        {
-            <div>
-                <p>Título: <b>@item.Titulo</b></p>
-                <p>Fecha lanzamiento: <b>@item.Lanzamiento.ToString("dd MMM yyyy")</b></p>
-            </div>
-        }*@
-    @if (Peliculas == null)
-    {
-        <text>Cargando...</text>
-    }
-    else if (Peliculas.Count == 0)
-    {
-        <div class="p-3 mb-2 bg-info text-white">No hay películas para mostrar</div>
-    }
-    else
-    {
-        for (var i = 0; i < Peliculas.Count; i++)
-        {
-            <div>
-                <p>@(i+1)) Título: <b>@Peliculas[i].Titulo</b></p>
-                <p>Fecha lanzamiento: <b>@Peliculas[i].Lanzamiento.ToString("dd MMM yyyy")</b></p>
-            </div>
-        }
-    }
-
+    <MoviesList Peliculas="ObtenerPeliculas()"/>
 </div>
-@code{
 
-    protected override async Task OnInitializedAsync()
-    {
-        await Task.Delay(3000);
-        Peliculas = ObtenerPeliculas();
-    }
+@code{ 
 
-    public List<Pelicula> Peliculas;
 
     /// <summary>
     /// Obtener lista de películas
@@ -47,11 +16,10 @@
     private List<Pelicula> ObtenerPeliculas()
     {
         return new List<Pelicula>
-        {
+    {
             new Pelicula{Titulo = "Spider-Man: Far from home", Lanzamiento = new DateTime(2020, 6, 18)},
             new Pelicula{Titulo = "Moana", Lanzamiento = new DateTime(2016, 11, 23)},
             new Pelicula{Titulo = "Inception", Lanzamiento = new DateTime(2010, 7, 16)}
         };
     }
 }
-

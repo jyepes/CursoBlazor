@@ -8,7 +8,7 @@ else if (Peliculas.Count == 0)
 }
 else
 {
-    <input type ="checkbox"  @onchange ="@(()=>displayButtons = !displayButtons)"/>
+    <input type ="checkbox"  @bind="displayButtons"/>
 
     @foreach (Pelicula item in Peliculas)
     {

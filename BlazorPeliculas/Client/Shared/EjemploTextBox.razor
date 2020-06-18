@@ -1,4 +1,7 @@
-﻿<input type="text" placeholder="Valor por defecto"  @attributes ="TextBoxParameters" />
+﻿
+@* @attributes se debe colocar al final para que se sobreescriban los atributos que se envían 
+    con prioridad sobre los que ya existen *@
+<input type="text" placeholder="Valor por defecto"  @attributes ="TextBoxParameters" />
 
 @code {
 

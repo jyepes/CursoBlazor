@@ -3,10 +3,21 @@
 <h3>Películas</h3>
 <br />
 <div>
-    <MoviesList Peliculas="ObtenerPeliculas()"/>
+    <MoviesList Peliculas="ObtenerPeliculas()">
+        <Cargando>
+            <div class="alert alert-secondary" role="alert">
+                Cargando...
+            </div>
+        </Cargando>
+        <NoHayPeliculas>
+            <div class="alert alert-primary" role="alert">
+                No hay registros para mostrar!
+            </div>
+        </NoHayPeliculas>
+    </MoviesList>
 </div>
-
-<h2>Crear película</h2>
+<hr />
+<h3>Crear película</h3>
 <EjemploTextBox placeholder ="Nombre de la película" enabled ="true" />
 
 @code{ 
@@ -19,7 +30,7 @@
     private List<Pelicula> ObtenerPeliculas()
     {
         return new List<Pelicula>
-    {
+        {
             new Pelicula{Titulo = "Spider-Man: Far from home", Lanzamiento = new DateTime(2020, 6, 18)},
             new Pelicula{Titulo = "Moana", Lanzamiento = new DateTime(2016, 11, 23)},
             new Pelicula{Titulo = "Inception", Lanzamiento = new DateTime(2010, 7, 16)}

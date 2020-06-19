@@ -4,7 +4,7 @@
     @if (DisplayButton)
     {
         <div>
-            <button class="btn-primary" @onclick="(()=> DeleteMovie.InvokeAsync(Pelicula))">Eliminar</button>
+            <button type="button" class="btn btn-warning" @onclick="(()=> DeleteMovie.InvokeAsync(Pelicula))">Eliminar</button>
         </div>
     }
 

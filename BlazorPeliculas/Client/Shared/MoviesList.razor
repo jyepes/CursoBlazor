@@ -12,7 +12,9 @@ else
 
     @foreach (Pelicula item in Peliculas)
     {
-        <SingleMovie Pelicula="item" DisplayButton="displayButtons"/>
+        <SingleMovie Pelicula="item" 
+                     DisplayButton="displayButtons"
+                     DeleteMovie="EliminarPelicula"/>
     }
 }
 
@@ -22,6 +24,12 @@ else
     public List<Pelicula> Peliculas { get; set; }
 
     bool displayButtons = false;
+
+    void EliminarPelicula(Pelicula pelicula)
+    {
+        Peliculas.Remove(pelicula);
+        Console.WriteLine($"Se eliminó la película {pelicula.Titulo}");
+    }
 
     //protected override async Task OnInitializedAsync()
     //{

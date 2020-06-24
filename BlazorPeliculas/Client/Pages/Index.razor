@@ -3,19 +3,9 @@
 <h3>Películas</h3>
 <br />
 <div>
-    <MoviesList Peliculas="ObtenerPeliculas()">
-        <Cargando>
-            <div class="alert alert-secondary" role="alert">
-                Cargando...
-            </div>
-        </Cargando>
-        <NoHayPeliculas>
-            <div class="alert alert-primary" role="alert">
-                No hay registros para mostrar!
-            </div>
-        </NoHayPeliculas>
-    </MoviesList>
+    <MoviesList Peliculas="ObtenerPeliculas()" />
 </div>
+
 <hr />
 <h3>Crear película</h3>
 <EjemploTextBox placeholder ="Nombre de la película" enabled ="true" />

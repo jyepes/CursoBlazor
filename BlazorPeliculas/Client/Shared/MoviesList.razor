@@ -1,47 +1,28 @@
-﻿@if (Peliculas == null)
-{
-    if (Cargando == null)
-    {
-        <text>Cargando...</text>
-    }
-    else
-    {
-        @Cargando;
-    }
-}
-else if (Peliculas.Count == 0)
-{
-    if (NoHayPeliculas == null)
-    {
-        <text>No hay películas para mostrar</text>
-    }
-    else
-    {
-        @NoHayPeliculas;
-    }
-}
-else
-{
-    <input type="checkbox" @bind="displayButtons" />
-
-    @foreach (Pelicula item in Peliculas)
-    {
-        <SingleMovie Pelicula="item"
+﻿
+<input type="checkbox" @bind="displayButtons" />
+<ListadoGenerico Listado="Peliculas">
+    <Cargando>
+        <div class="alert alert-secondary" role="alert">
+            Cargando...
+        </div>
+    </Cargando>
+    <NoHayRegistros>
+        <div class="alert alert-primary" role="alert">
+            No hay registros para mostrar!
+        </div>
+    </NoHayRegistros>
+    <HayRegistros Context="pelicula">
+        <SingleMovie Pelicula="pelicula"
                      DisplayButton="displayButtons"
                      DeleteMovie="EliminarPelicula" />
-    }
-}
+    </HayRegistros>
+</ListadoGenerico>
+
 
 @code{
 
     [Parameter]
     public List<Pelicula> Peliculas { get; set; }
-
-    [Parameter]
-    public RenderFragment Cargando { get; set; }
-
-    [Parameter]
-    public RenderFragment NoHayPeliculas { get; set; }
 
 
 

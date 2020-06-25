@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using BlazorPeliculas.Client.Repositorios;
 
 namespace BlazorPeliculas.Client
 {
@@ -17,9 +18,20 @@ namespace BlazorPeliculas.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            ConfigureServices(builder.Services);
+
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             await builder.Build().RunAsync();
+        }
+
+        public static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddOptions(); //sistema de autorización
+            services.AddSingleton<ServicioSingleton>();
+            services.AddTransient<ServicioTransient>();
+            services.AddScoped<IRepositorio, Repositorio>();
+
         }
     }
 }

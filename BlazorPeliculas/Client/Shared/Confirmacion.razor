@@ -1,0 +1,50 @@
+﻿
+@if (MostrarConfirmacion)
+{
+    <div class="modal-backdrop show"></div>
+    <!-- Modal -->
+    <div class="modal fade show" id="staticBackdrop"
+         data-backdrop="static" data-keyboard="false" tabindex="-1"
+         role="dialog" aria-labelledby="staticBackdropLabel" style="display:block"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">@Title</h5>
+                    <button type="button" @onclick="onCancel" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @ChildContent
+                </div>
+                <div class="modal-footer">
+                    <button type="button" @onclick="onCancel" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" @onclick="onConfirm" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; } = "Confirmación";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback onCancel { get; set; }
+
+    [Parameter]
+    public EventCallback onConfirm { get; set; }
+
+    private bool MostrarConfirmacion = false;
+
+    public void Mostrar() => MostrarConfirmacion = true;
+    public void Ocultar() => MostrarConfirmacion = false;
+
+}

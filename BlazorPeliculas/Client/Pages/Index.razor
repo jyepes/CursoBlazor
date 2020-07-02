@@ -1,16 +1,11 @@
 ﻿@page "/"
 @inject IRepositorio repositorio
 
-<h3>Películas</h3>
-<br />
 <div>
+    <h3>Películas</h3>
     <MoviesList Peliculas="Peliculas" />
 </div>
 
-<hr />
-<h3>Crear película</h3>
-<EjemploTextBox placeholder ="Nombre de la película" enabled ="true" />
-<button class="btn btn-primary" @onclick="AgregarPelicula">Agregar película</button>
 @code{ 
 
     private List<Pelicula> Peliculas;
@@ -18,10 +13,5 @@
     protected override void OnInitialized()
     {
         Peliculas = repositorio.ObtenerPeliculas();
-    }
-
-    void AgregarPelicula()
-    {
-        Peliculas.Add(new Pelicula { Titulo = "Nueva película", Lanzamiento = DateTime.Today});
     }
 }

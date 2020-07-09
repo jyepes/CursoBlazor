@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using BlazorPeliculas.Client.Repositorios;
+using Blazor.FileReader;
 
 namespace BlazorPeliculas.Client
 {
@@ -31,7 +32,7 @@ namespace BlazorPeliculas.Client
             services.AddSingleton<ServicioSingleton>();
             services.AddTransient<ServicioTransient>();
             services.AddScoped<IRepositorio, Repositorio>();
-
+            services.AddFileReaderService(options => options.InitializeOnFirstCall = true);
         }
     }
 }

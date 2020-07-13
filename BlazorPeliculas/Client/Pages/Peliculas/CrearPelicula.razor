@@ -1,10 +1,11 @@
 ﻿@page "/peliculas/crear"
 @inject NavigationManager navigationManager 
 
-<h3>CrearPelicula</h3>
-<button class="btn btn-outline-primary" @onclick="Crear">Crear película</button>
+<h3>Crear película</h3>
+<FormularioPeliculas Pelicula="pelicula" OnValidSubmmit="Crear"></FormularioPeliculas> 
 
 @code {
+    private Pelicula pelicula = new Pelicula();
 
     void Crear()
     {

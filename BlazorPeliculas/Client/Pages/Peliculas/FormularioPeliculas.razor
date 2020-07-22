@@ -42,6 +42,23 @@
         <label>Géneros</label>
         <SelectorMultiple Seleccionados="Seleccionados" NoSeleccionados="NoSeleccionados"></SelectorMultiple>
     </div>
+
+    <div class="form-group">
+        <label>Actores:</label>
+        <div>
+            <SelectorMultipleTypeahead Context="persona"
+                                       SearchMethod="BuscarActores"
+                                       ElementosSeleccionados="ActoresSeleccionados">
+                <MyListTemplate>
+                    @persona.Nombre
+                </MyListTemplate>
+                <MyResultTemplate>
+                    <img style="width: 50px" src="@persona.Foto" />
+                    @persona.Nombre
+                </MyResultTemplate>
+            </SelectorMultipleTypeahead>
+        </div>
+    </div>
     <button type="submit" class="btn btn-success">Guardar película</button>
 </EditForm>
 

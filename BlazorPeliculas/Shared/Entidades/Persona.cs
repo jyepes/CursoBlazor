@@ -18,5 +18,7 @@ namespace BlazorPeliculas.Shared.Entidades
 
         [Required]
         public DateTime? FechaNacimiento { get; set; }
+
+        public List<PeliculaActor> PeliculasActor { get; set; }
     }
 }
